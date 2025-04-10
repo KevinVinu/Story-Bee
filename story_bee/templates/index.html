@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Bee - Share Your Tale</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Story Bee</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#discover">Discover</a></li>
+            <li><a href="#write">Write</a></li>
+            <li id="auth-link"><a href="#" id="login-signup">Login/Signup</a></li>
+            <li id="profile-link" style="display: none;"><a href="#profile">Profile</a></li>
+        </ul>
+        <div class="hamburger">☰</div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="welcome-banner">
+            <h1>Welcome to Story Bee</h1>
+            <p id="dynamic-quote">"Every story is a journey waiting to unfold."</p>
+        </div>
+        <div class="trending-stories">
+            <h2>Trending Stories</h2>
+            <div class="story-grid" id="story-grid"></div>
+        </div>
+    </section>
+
+    <!-- Discover Section -->
+    <section id="discover" class="section" style="display: none;">
+        <h2>Discover Stories</h2>
+        <div class="filter-bar">
+            <select id="genre-filter">
+                <option value="">All Genres</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Horror">Horror</option>
+            </select>
+            <button id="apply-filter">Filter</button>
+        </div>
+        <div class="story-grid" id="discover-grid"></div>
+    </section>
+
+    <!-- Write Section -->
+    <div id="write" style="display: none;">
+        <h2>Write a Story</h2>
+        <form id="story-form">
+            <input type="text" id="story-title" placeholder="Story Title" required>
+            <textarea id="story-content" placeholder="Your story begins here..." required></textarea>
+            <input type="text" id="image-url" placeholder="Image URL (optional)">
+            <select id="genre">
+                <option value="">Select Genre (optional)</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Horror">Horror</option>
+            </select>
+            <button type="submit">Submit Story</button>
+            <button type="button" id="generate-ai-story">Generate AI Story</button>
+        </form>
+    </div>
+
+    <!-- Profile Section -->
+    <section id="profile" class="section" style="display: none;">
+        <div class="profile-header">
+            <h2>Your Story Haven</h2>
+            <div class="profile-avatar"></div>
+        </div>
+        <p id="profile-username" class="profile-detail"></p>
+        <p id="profile-story-count" class="profile-detail"></p>
+        <h3>Your Masterpieces</h3>
+        <ul id="profile-story-list" class="profile-story-list"></ul>
+        <h3>Saved Stories</h3>
+        <ul id="profile-saved-list" class="profile-story-list"></ul>
+    </section>
+
+    <!-- Login/Signup Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <h2 id="modal-title">Login</h2>
+            <form id="auth-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" id="auth-submit">Login</button>
+                <p id="toggle-auth">Don't have an account? <a href="#" id="switch-to-signup">Signup</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Story Reading Modal -->
+    <div id="story-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-story">×</span>
+            <h2 id="story-title-display"></h2>
+            <img id="story-image" src="" alt="Story Cover">
+            <p id="story-content-display"></p>
+            <p id="story-author"></p>
+            <p id="story-genre"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
