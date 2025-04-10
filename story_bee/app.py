@@ -14,13 +14,13 @@ app = Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.dirname(__file__), 'stories.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = 'a-very-secure-random-key-12345'
+app.config['JWT_SECRET_KEY'] = 'a-very-secure-random-key-****enter ur key***'
 db = SQLAlchemy(app)
 jwt = JWTManager(app)
 
 # DeepSeek API Configuration
-API_KEY = "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"
-API_URL = "https://openrouter.ai/api/v1/chat/completions"
+API_KEY = "enter your api key"
+API_URL = "enter api url"
 HEADERS = {
     "Authorization": f"Bearer {API_KEY}",
     "Content-Type": "application/json"
@@ -225,7 +225,7 @@ def generate_story():
     )
 
     payload = {
-        "model": "deepseek/deepseek-r1:free1",
+        "model": "enter the model name you are using",
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": partial_story}
